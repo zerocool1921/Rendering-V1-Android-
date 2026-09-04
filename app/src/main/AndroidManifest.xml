@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Storage Access Framework / Photo Picker tidak butuh permission READ_EXTERNAL_STORAGE
+         di API 26+ selama pakai SAF/Photo Picker (lihat section 2 blueprint). -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- opsional: Mode Generate via AI (section 6.4) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".VisualizerStudioApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VisualizerStudio"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VisualizerStudio">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- render/RenderWorker (worker/ForegroundService) ditambahkan Fase 2 — WorkManager
+             sudah otomatis ter-inisialisasi lewat Hilt WorkManager Configuration.Provider,
+             tidak perlu <provider> manual di sini. -->
+
+    </application>
+
+</manifest>

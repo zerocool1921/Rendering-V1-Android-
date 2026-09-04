@@ -91,9 +91,11 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.51.1")
 
     // --- FFmpeg (dasar integrasi Fase 1 — lihat section 10 blueprint) ---
-    // Fork komunitas drop-in pengganti arthenica/ffmpeg-kit yang sudah archived,
-    // tidak perlu build NDK manual, siap dipakai FfmpegFilterGraphBuilder di Fase 2.
-    implementation("com.github.ffmpeg-kit-maintained.ffmpeg-kit-maintained:ffmpeg-kit-full-gpl:6.0.5-r1")
+    // GANTI: "ffmpeg-kit-maintained" via JitPack (tier full-gpl) mengembalikan 401
+    // Unauthorized — package itu dikunci di belakang gate berbayar, bukan gratis
+    // seperti klaim awalnya. Diganti ke republish Maven Central dari binary
+    // ffmpeg-kit-full lama (LGPL, gratis, tanpa autentikasi):
+    implementation("com.moizhassan.ffmpeg:ffmpeg-kit-16kb:6.1.1")
 
     // --- Testing ---
     testImplementation("junit:junit:4.13.2")

@@ -1,0 +1,15 @@
+# File state runtime (dibuat otomatis saat aplikasi pertama jalan)
+queue.json
+presets.json
+error.txt
+temp/
+assets/
+shaders/
+
+# Python
+__pycache__/
+*.pyc
+
+# Hasil render
+*.mp4
+*.mkv
